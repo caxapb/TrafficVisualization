@@ -1,0 +1,110 @@
+body { 
+    margin: 0; 
+    overflow: hidden; 
+}
+
+#info, #stats, #chart-container, #controls {
+    position: absolute;
+    background: rgba(0,0,0,0.7);
+    /* background-color: red; */
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    font-family: Arial, sans-serif;
+}
+
+#info { top: 10px; left: 10px; max-width: 300px; }
+#stats { bottom: 10px; left: 10px; max-width: 300px; }
+#chart-container { top: 10px; right: 10px; width: 300px; }
+#controls { bottom: 10px; right: 10px; width: 100px;}
+
+/* .point {
+    position: fixed;
+    font-size: 24px;
+    pointer-events: none;
+    text-shadow: 0 0 8px rgba(255,255,255,0.5);
+    transform: translate(-50%, -50%);
+} */
+
+/* .normal { color: green; }
+.suspicious { color: red; } */
+
+/* .tooltip {
+    position: fixed;
+    background: rgba(0,0,0,0.8);
+    color: white;
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    pointer-events: none;
+    z-index: 100;
+    max-width: 200px;
+    transform: translate(-50%, -100%);
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+.tooltip.visible {
+    opacity: 1;
+} */
+
+.point {
+    position: absolute;
+    pointer-events: auto;
+    display: flex;
+    align-items: center;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    cursor: pointer;
+}
+
+.point-marker {
+    width: 12px;
+    height: 12px;
+    background-color: rgba(0,255,0,0.6);
+    border: none;
+    border-radius: 100%;
+}
+.sus {
+    background-color: rgba(255,0,0,0.6);
+}
+
+.point:hover .point-marker {
+    transform: scale(1.35);
+}
+
+.point-label {
+    font-size: 12px;
+    color: white;
+    text-shadow: 0 0 3px black;
+    white-space: nowrap;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 2px 6px;
+    border-radius: 4px;
+    margin-left: 8px;
+    display: none; 
+    position: absolute;
+    left: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+
+#rotation-toggle {
+    background-color: #cfd2cf;
+    border: none;
+    color: black;
+    font-weight: bold;
+    padding: 8px 16px;
+    text-align: center;
+    display: inline-block;
+    font-size: 14px;
+    /* margin: 4px 2px; */
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+
+#rotation-toggle:hover {
+    background-color: #767776;
+}

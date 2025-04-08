@@ -1,0 +1,28 @@
+# docker-compose.yml
+services:
+  sender:
+    build:
+      context: .
+      dockerfile: ./backend/Dockerfile.sender
+    depends_on:
+      - server
+    volumes:
+      - ./backend/data:/app/data
+
+  server:
+    build:
+      context: .
+      dockerfile: ./backend/Dockerfile.server
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./backend/data:/app/data
+
+  frontend:
+    build:
+      context: .
+      dockerfile: ./frontend/Dockerfile.frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - server

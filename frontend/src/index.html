@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Traffic Visualization</title>
+    <link rel="stylesheet" href="./styles/styles.css">
+</head>
+
+<body>
+    <div id="info">
+        <h2>Web Traffic Visualization</h2>
+        <p>Total packages: <span id="total-packages">0</span></p>
+        <p>Suspicious packages: <span id="suspicious-packages">0</span></p>
+        <div id="top-locations">
+            <h3>Top Locations:</h3>
+            <p>IP addresses that sent the biggest amounts of packages</p>
+            <ol id="locations-list"></ol>
+        </div>
+    </div>
+    
+    <div id="chart-container">
+        <h3>Activity by Continent</h3>
+        <canvas id="activity-chart" width="280" height="200"></canvas>
+    </div>
+    
+    <div id="stats">
+        <p>Drag the cursor to rotate. Scroll to zoom.</p>
+        <p>Hover over points to see details.</p>
+    </div>
+
+    <div id="controls">
+        <button id="rotation-toggle">Pause Autorotation</button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/build/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/examples/js/controls/OrbitControls.js"></script>
+    <script src="./js/app.js"></script>
+</body>
+</html>
+
+
