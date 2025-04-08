@@ -3,15 +3,18 @@ from pycountry_convert import country_alpha2_to_continent_code, country_name_to_
 from geopy.geocoders import Nominatim
 from geopy.exc import GeocoderTimedOut, GeocoderUnavailable
 
+# the geolocator from geopy
 geolocator = Nominatim(user_agent="continent_finder")
 
 def get_continent(lat, lon, retries=3):
+    # try 3 times at max to convert, otherwise return Unknown
     try:
+        # convert coordinates to country name
         location = geolocator.reverse((lat, lon), exactly_one=True, language='en')
         if location and location.raw.get('address'):
             address = location.raw['address']
             country = address.get('country', '')
-            
+            # convert country name to continent
             if country:
                 try:
                     country_code = country_name_to_country_alpha2(country)
