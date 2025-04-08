@@ -8,23 +8,31 @@
 </head>
 
 <body>
-    <div id="info">
+    <div id="stats">
         <h2>Web Traffic Visualization</h2>
-        <p>Total packages: <span id="total-packages">0</span></p>
-        <p>Suspicious packages: <span id="suspicious-packages">0</span></p>
+        <p>Total packages amount: <span id="total-packages">0</span></p>
+        <p>Suspicious packages amount: <span id="suspicious-packages">0</span></p>
         <div id="top-locations">
             <h3>Top Locations:</h3>
             <p>IP addresses that sent the biggest amounts of packages</p>
-            <ol id="locations-list"></ol>
+            <table id="locations">
+                <thead>
+                    <tr>
+                        <th>Coordinates</th>
+                        <th>Packages</th>
+                    </tr>
+                </thead>
+                <tbody id="locations-body"></tbody>
+            </table>
         </div>
     </div>
     
-    <div id="chart-container">
+    <div id="bar-container">
         <h3>Activity by Continent</h3>
-        <canvas id="activity-chart" width="280" height="200"></canvas>
+        <canvas id="activity-bar" width="280" height="200"></canvas>
     </div>
     
-    <div id="stats">
+    <div id="info">
         <p>Drag the cursor to rotate. Scroll to zoom.</p>
         <p>Hover over points to see details.</p>
     </div>

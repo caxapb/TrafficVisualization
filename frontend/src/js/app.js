@@ -1,4 +1,4 @@
-const POINT_LIFETIME = 100000;
+const POINT_LIFETIME = 12000;
 const GREEN = 0x00ff00;
 const RED = 0xff0000;
 const WHITE = 0xffffff;
@@ -259,10 +259,13 @@ async function updateStats() {
         document.getElementById('suspicious-packages').textContent = stats.suspicious_packages;
 
         // list of top locations: create points in the ordered lists
-        const locationsList = document.getElementById('locations-list');
-        locationsList.innerHTML = stats.top_locations.map(coords => 
-            `<li>Coords: ${coords.lat.toFixed(2)}, ${coords.lng.toFixed(2)} - ${coords.count} packages</li>`
-        ).join('\n');
+        const locationsBody = document.getElementById('locations-body');
+        locationsBody.innerHTML = stats.top_locations.map(coords => 
+            `<tr>
+                <td>${coords.lat.toFixed(3)}, ${coords.lng.toFixed(3)}</td>
+                <td>${coords.count}</td>
+            </tr>`
+        ).join('');
         
         // update the bar plot with continents
         updateActivityChart(stats.continents);
@@ -280,13 +283,13 @@ function startDataFetching() {
 
 // Chart functions, set the metadata
 function initActivityChart() {
-    const plot = document.getElementById('activity-chart').getContext('2d');
+    const plot = document.getElementById('activity-bar').getContext('2d');
     activityChart = new Chart(plot, {
         type: 'bar',
         data: { labels: [], datasets: [{
             label: 'Packages by Continent',
             data: [],
-            backgroundColor: 'rgba(75, 192, 192, 0.6)',
+            backgroundColor: 'rgba(5, 113, 113, 0.6)',
             borderColor: 'rgba(75, 192, 192, 1)',
             borderWidth: 1
         }]},

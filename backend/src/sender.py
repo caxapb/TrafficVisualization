@@ -4,8 +4,8 @@ import time
 
 def send_data(csv_file, server_url):
     df = pd.read_csv(csv_file)
-    start_time = df.iloc[0]["Timestamp"] 
-    send_start = time.time()
+    package_start = df.iloc[0]["Timestamp"] 
+    app_start = time.time()
 
     for _, row in df.iterrows():
         package = {
@@ -17,11 +17,12 @@ def send_data(csv_file, server_url):
             "continent":  row["continent"],
         }
         
-        delay = row["Timestamp"] - start_time
-        while time.time() - send_start < delay:
+        delay = row["Timestamp"] - package_start
+        while time.time() - app_start < delay:
             time.sleep(0.1)
         
         response = requests.post(f"{server_url}/api/packages", json=package)
 
 if __name__ == "__main__":
+    # there will be "data" folder in docker
     send_data("data/packages_with_continents.csv", "http://server:5000")
