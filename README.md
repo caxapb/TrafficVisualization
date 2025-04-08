@@ -11,7 +11,7 @@ packages are sent with correct time delays.
 The functionality of this application can be expanded if required. Additional data can bring more visualizations and new features can be rendered.
 
 # Data Preparation
-To collect continents statistics we firstly should identify them for each package. The data_preparation.py takes the **initial** dataset ip_addresses.csv, process each record and assign it a country. The processing lasts about an hour for the best accuracy. After that we get the **packages_with_continents.csv** file.
+To collect continents statistics we firstly should identify a continent per each package. The data_preparation.py takes the **initial** dataset ip_addresses.csv, process each record and assign it a country. The processing lasts about an hour for the best accuracy. After that we get the **packages_with_continents.csv** file.
 
 # Running the App
 
