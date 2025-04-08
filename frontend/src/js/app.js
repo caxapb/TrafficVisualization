@@ -27,7 +27,7 @@ function setupScene() {
     scene = new THREE.Scene();
 
     camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-    camera.position.z = 2;
+    camera.position.z = 500;
 
     renderer = new THREE.WebGLRenderer({ antialias: true });
     renderer.setSize(window.innerWidth, window.innerHeight);
@@ -312,9 +312,27 @@ function updateActivityChart(continentData) {
     activityChart.update();
 }
 
+// for smooth globe showing up
+let animationState = {
+    zooming: true,
+    targetZ: 3,
+    speed: 0.06,
+};
+
 function animate() {
     requestAnimationFrame(animate);   // schedule the next frame, creating a continuous 60fps loop
-    controls.update();                // 'controls' for autorotation 
+    if (animationState.zooming) {
+        // move camera closer and closer to the globe
+        camera.position.z -= (camera.position.z - animationState.targetZ) * animationState.speed;
+        
+        // check if the camera should stop
+        if (Math.abs(camera.position.z - animationState.targetZ) < 0.01) {
+            camera.position.z = animationState.targetZ;
+            animationState.zooming = false
+        }
+    } else {
+        controls.update();            // 'controls' for autorotation 
+    }
     clouds.rotation.y += 0.0008;      // set clouds speed
     
     // for each point on the globe:
