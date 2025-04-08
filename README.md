@@ -9,3 +9,15 @@ packages are sent with correct time delays.
 - The left corner keeps data about top locations: which location is sending the most of packages. The right corner is a statictical chart demonstrating continents and amount of packages sent from there.
 
 The functionality of this application can be expanded if required. Additional data can bring more visualizations and new features can be rendered.
+
+# Running the App
+
+To run the app:
+1) clone the repository
+2) run from the project root:
+
+```
+docker-compose up --build
+```
+
+3) the application can be accessed on: http://localhost/, http://localhost:80, or http://localhost/app. 
